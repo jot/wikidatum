@@ -15,11 +15,11 @@ module Wikidatum::Utils
   end
 
   def self.symbolized_name_for_data_type(data_type)
-    unless Wikidatum::DataType::DATA_TYPES.keys.include?(data_type.to_sym)
+    unless Wikidatum::DataType::DATA_TYPES.keys.include?(data_type&.to_sym)
       puts "WARNING: Unsupported data type (#{data_type})"
       return nil
     end
 
-    Object.const_get(Wikidatum::DataType::DATA_TYPES[data_type.to_sym]).symbolized_name
+    Object.const_get(Wikidatum::DataType::DATA_TYPES[data_type&.to_sym]).symbolized_name
   end
 end
